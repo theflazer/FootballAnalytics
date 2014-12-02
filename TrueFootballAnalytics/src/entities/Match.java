@@ -1,5 +1,6 @@
 package entities;
 
+import analytics.*;
 
 public class Match {
 	private Team homeTeamName;
@@ -25,8 +26,46 @@ public class Match {
 		awaySaves = aSaves;
 		homeP = hP;
 		awayP = aP;
-		hTeam.updateHomeStats(this);
-		aTeam.updateAwayStats(this);
+		UpdateHelper.updateStats(this);
+	}
+	
+	public Team getHomeTeam(){
+		return homeTeamName;
+	}
+	
+	public Team getAwayTeam(){
+		return awayTeamName;
+	}
+	public int gethomeGoals(){
+		return homeGoals;
+	}
+	
+	public int getawayGoals(){
+		return awayGoals;
+	}
+	
+	public int gethomeShots(){
+		return homeShots;
+	}
+	
+	public int getawayShots(){
+		return awayShots;
+	}
+	
+	public int gethomeSaves(){
+		return homeSaves;
+	}
+	
+	public int getawaySaves(){
+		return awaySaves;
+	}
+	
+	public int gethomeP(){
+		return homeP;
+	}
+	
+	public int getawayP(){
+		return awayP;
 	}
 	
 	public void displayString(){

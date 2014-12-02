@@ -1,16 +1,19 @@
 package entities;
 import java.util.ArrayList;
 
+import analytics.*;
 
 public class Season {
 	private int year;
 	private static ArrayList<Match> matchList;
 	private static ArrayList<Team> teamList;
+	AnalyticsCentral Analytics;
 	
 	public Season(int y) {
 		year=y;
 		matchList = new ArrayList<Match>();
 		teamList = new ArrayList<Team>();
+		Analytics = new AnalyticsCentral();
 	}
 
 
@@ -45,6 +48,10 @@ public class Season {
 	public void archive() {
 		// TODO Auto-generated method stub
 		System.out.println("End of "+year+" season");
+	}
+	
+	public AnalyticsCentral getAnalyticsClass(){
+		return Analytics;
 	}
 	
 }
