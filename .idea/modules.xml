@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FootballAnalytics.iml" filepath="$PROJECT_DIR$/FootballAnalytics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TrueFootballAnalytics/TrueFootballAnalyticsCityU.iml" filepath="$PROJECT_DIR$/TrueFootballAnalytics/TrueFootballAnalyticsCityU.iml" />
     </modules>
   </component>
 </project>
