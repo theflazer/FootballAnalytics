@@ -1,5 +1,8 @@
 package entities;
 
+import entities.Season;
+
+
 
 public class League {
 	private static Season currentSeason;
@@ -7,7 +10,8 @@ public class League {
 		return currentSeason;
 	}
 	
-	public static void startSeason(int year){
+	public static void startSeason(String [] inputs){
+		int year=Integer.parseInt(inputs[0]);
 		if(currentSeason==null)
 			currentSeason=new Season(year);
 	}

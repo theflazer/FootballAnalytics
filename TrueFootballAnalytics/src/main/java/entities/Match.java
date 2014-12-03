@@ -68,8 +68,8 @@ public class Match {
 		return awayP;
 	}
 	
-	public void displayString(){
-		System.out.println(homeTeamName.getName() + " " + awayTeamName.getName() + " " + homeGoals + " " + awayGoals + " " +homeShots + " "+ awayShots + " " + homeSaves +" " + awaySaves + " " + homeP + " " + awayP); 
+	public String toString(){
+		return homeTeamName.getName() + " " + awayTeamName.getName() + " " + homeGoals + " " + awayGoals + " " +homeShots + " "+ awayShots + " " + homeSaves +" " + awaySaves + " " + homeP + " " + awayP;
 	}
 
 }

@@ -8,8 +8,8 @@ public class UpdateHelper {
 		double awayGoals = (double)m.getawayGoals();
 		double homeShots= (double)m.gethomeShots();
 		double homeSaves = (double)m.gethomeSaves();
-		double awayShots= (double)m.getawayGoals();
-		double awaySaves = (double)m.getawayGoals();
+		double awayShots= (double)m.getawayShots();
+		double awaySaves = (double)m.getawaySaves();
 		double homePossesion = (double)m.gethomeP();
 		double awayPossesion= (double)m.getawayP();
 		

@@ -1,12 +1,15 @@
 package entities;
+import io.Printer;
+
 import java.util.ArrayList;
 
 import analytics.*;
 
+
 public class Season {
 	private int year;
-	private static ArrayList<Match> matchList;
-	private static ArrayList<Team> teamList;
+	private ArrayList<Match> matchList;
+	private ArrayList<Team> teamList;
 	AnalyticsCentral Analytics;
 	
 	public Season(int y) {
@@ -31,7 +34,6 @@ public class Season {
 		int aP = Integer.parseInt(matchStats[9]);
 		
 		Match m = new Match(hTeam, aTeam, hGoals, aGoals, hShots, aShots, hSaves, aSaves, hP, aP);
-		m.displayString();
 		matchList.add(m);
 	}
 	
@@ -47,11 +49,28 @@ public class Season {
 
 	public void archive() {
 		// TODO Auto-generated method stub
-		System.out.println("End of "+year+" season");
+		Printer.PrintToFile(teamList, Integer.toString(year));
+		System.out.println("Season has been archived");
 	}
 	
 	public AnalyticsCentral getAnalyticsClass(){
 		return Analytics;
 	}
-	
+
+	public ArrayList<Team> getTeamList() {
+		return teamList;
+	}
+
+    public int getYear()
+    {
+        return year;
+    }
+
+    public ArrayList<Match> getMatchList(){
+        return matchList;
+    }
+
+	public void setTeamList(ArrayList<Team> teamList) {
+		this.teamList = teamList;
+	}
 }

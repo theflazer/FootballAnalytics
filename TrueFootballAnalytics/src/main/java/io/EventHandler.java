@@ -5,7 +5,6 @@ import commands.*;
 
 public class EventHandler {
 private static EventHandler eventHandler = new EventHandler();
-private Command c;
 	
 	private EventHandler(){
 	}
@@ -23,18 +22,15 @@ private Command c;
 		}
 		if (command.equals("match"))
 		{
-			c = new MatchCommand();
-			c.process(values);
+			Invoker.call(new MatchCommand(values));
 		}
 		else if (command.equals("start"))
 		{
-			c = new StartCommand();
-			c.process(values);
+			Invoker.call(new StartCommand(values));
 		}
 		else if(command.equals("stop"))
 		{
-			c = new StopCommand();
-			c.process(values);
+			Invoker.call(new StopCommand(values));
 		}
 	}
 
