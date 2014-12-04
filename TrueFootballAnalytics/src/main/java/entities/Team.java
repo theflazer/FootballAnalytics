@@ -38,9 +38,9 @@ public class Team implements TeamInterface {
 	public String getName(){
 		return name;
 	}
-	public void setName(String n){
-		name = n;
-	}
+//	public void setName(String n){
+//		name = n;
+//	}
 	
 	public double getPDO(){
 		return PDO;
@@ -58,14 +58,14 @@ public class Team implements TeamInterface {
 		return matchesPlayed;
 	}
 	
-	public void update(double PDO, double TSR, double possesion, double goalsScored, double goalsAgainst){
-		updatePDO(PDO);
-		updateTSR(TSR);
-		updatepossesion(possesion);
-		updatematches();
-		updateTableStats(goalsScored, goalsAgainst);
-		updateFormGuide(goalsScored, goalsAgainst);
-	}
+//	public void update(double PDO, double TSR, double possesion, double goalsScored, double goalsAgainst){
+//		updatePDO(PDO);
+//		updateTSR(TSR);
+//		updatepossesion(possesion);
+//		updatematches();
+//		updateTableStats(goalsScored, goalsAgainst);
+//		updateFormGuide(goalsScored, goalsAgainst);
+//	}
 	
 	public void update( double possesion, int goalsScored, int goalsAgainst){
 		updatepossesion(possesion);
@@ -123,17 +123,17 @@ public class Team implements TeamInterface {
 	public LinkedList<Double> getResult() {
 		return result;
 	}
-	public void setResult(LinkedList<Double> result) {
-		this.result = result;
-	}
+//	public void setResult(LinkedList<Double> result) {
+//		this.result = result;
+//	}
 	
 	public void setIndicative(double prediction){
 		this.indicative = prediction;
 	}
 	
-	public double getIndicative(){
-		return indicative;
-	}
+//	public double getIndicative(){
+//		return indicative;
+//	}
 	
 	public void setPDO(double finalPDO){
 		PDO = finalPDO;

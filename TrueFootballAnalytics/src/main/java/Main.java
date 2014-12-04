@@ -20,11 +20,11 @@ import io.EventHandler;
 public class Main {
 
 	public static void main(String[] args) throws IOException, JAXBException {
-		File file = new File("input_file_TFA.txt");
+		File file = new File(args[0]);
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		String line;
-		Context c=new Context();
-		ContextInterface.setContext(c);
+		ContextInterface c =new Context();
+//		ContextInterface.setContext(c);
 		EventHandler e = new EventHandler(c);
 		while ((line = br.readLine()) != null) {
 		   e.process(line);
