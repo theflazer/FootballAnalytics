@@ -2,21 +2,21 @@ package entities;
 
 public interface MatchInterface {
 
-	public int gethomeGoals();
+	public int getHomeGoals();
 
-	public int getawayGoals();
+	public int getAwayGoals();
 
-	public int gethomeShots();
+	public int getHomeShots();
 
-	public int getawayShots();
+	public int getAwayShots();
 
-	public int gethomeSaves();
+	public int getHomeSaves();
 
-	public int getawaySaves();
+	public int getAwaySaves();
 
-	public int gethomeP();
+	public int getHomeP();
 
-	public int getawayP();
+	public int getAwayP();
 
 	
 }

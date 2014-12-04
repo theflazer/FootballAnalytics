@@ -1,7 +1,5 @@
 package entities;
 
-import analytics.*;
-
 public class Match implements MatchInterface {
 	private TeamInterface homeTeam;
 	private TeamInterface awayTeam;
@@ -27,7 +25,7 @@ public class Match implements MatchInterface {
 		homeP = hP;
 		awayP = aP;
 	}
-	
+//	TODO:Get rid of Team Getters if not needed
 	public TeamInterface getHomeTeam(){
 		return homeTeam;
 	}
@@ -35,40 +33,41 @@ public class Match implements MatchInterface {
 	public TeamInterface getAwayTeam(){
 		return awayTeam;
 	}
-	public int gethomeGoals(){
+	public int getHomeGoals(){
 		return homeGoals;
 	}
 	
-	public int getawayGoals(){
+	public int getAwayGoals(){
 		return awayGoals;
 	}
 	
-	public int gethomeShots(){
+	public int getHomeShots(){
 		return homeShots;
 	}
 	
-	public int getawayShots(){
+	public int getAwayShots(){
 		return awayShots;
 	}
 	
-	public int gethomeSaves(){
+	public int getHomeSaves(){
 		return homeSaves;
 	}
 	
-	public int getawaySaves(){
+	public int getAwaySaves(){
 		return awaySaves;
 	}
 	
-	public int gethomeP(){
+	public int getHomeP(){
 		return homeP;
 	}
 	
-	public int getawayP(){
+	public int getAwayP(){
 		return awayP;
 	}
 	
-	public void displayString(){
-		System.out.println(homeTeam.getName() + " " + awayTeam.getName() + " " + homeGoals + " " + awayGoals + " " +homeShots + " "+ awayShots + " " + homeSaves +" " + awaySaves + " " + homeP + " " + awayP); 
+	@Override
+    public String toString(){
+		return homeTeam.getName() + " " + awayTeam.getName() + " " + getHomeGoals() + " " + getAwayGoals() + " " + getHomeShots() + " "+ getAwayShots() + " " + getHomeSaves() +" " + getAwaySaves() + " " + getHomeP() + " " + getAwayP();
 	}
 
 }
