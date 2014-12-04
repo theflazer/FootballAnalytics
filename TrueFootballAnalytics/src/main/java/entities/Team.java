@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 import analytics.*;
 
-public class Team {
+public class Team implements TeamInterface {
 	private String name;
 	private double PDO;
 	private double TSR;
@@ -16,6 +16,8 @@ public class Team {
 	private int draw;
 	private int totalGoals;
 	private int totalConceded;
+	private double indicative;
+
 	LinkedList<Double> result;
 	
 	public Team(String n){
@@ -30,6 +32,7 @@ public class Team {
 		totalGoals = 0;
 		totalConceded = 0;
 		loss = 0;
+		indicative = 0;
 		result = new LinkedList<Double>();
 	}
 	public String getName(){
@@ -64,6 +67,13 @@ public class Team {
 		updateFormGuide(goalsScored, goalsAgainst);
 	}
 	
+	public void update( double possesion, int goalsScored, int goalsAgainst){
+		updatepossesion(possesion);
+		updatematches();
+		updateTableStats(goalsScored, goalsAgainst);
+		updateFormGuide(goalsScored, goalsAgainst);
+	}
+	
 	private void updateFormGuide(double goalsScored, double goalsAgainst) {
 		if(matchesPlayed<6)
 			result.add(goalsScored-goalsAgainst);
@@ -77,10 +87,6 @@ public class Team {
 		return points;
 	}
 
-	
-	public void updatePDO(double matchPDO){
-		PDO=(PDO*matchesPlayed + matchPDO)/(matchesPlayed+1);
-	}
 	
 	public void updateTableStats(double goalsScored, double goalsAgainst){
 		totalGoals+=goalsScored;
@@ -98,10 +104,7 @@ public class Team {
 		}
 	}
 	
-	public void updateTSR(double matchTSR){
-		TSR=(TSR*matchesPlayed + matchTSR)/(matchesPlayed+1);
-	}
-
+	
 	public void updatepossesion(double possesion){
 		possesionAvg=(possesionAvg*matchesPlayed + possesion)/(matchesPlayed+1);
 	}
@@ -112,8 +115,40 @@ public class Team {
 	
 	@Override
 	public String toString(){
-		String result = String.format("%-18s%-3d%-3d%-3d%-3d%-3d", this.name, this.matchesPlayed, this.win, this.loss, this.draw, this.points);
+		String result = String.format("%-20s%-3d%-3d%-3d%-3d%-7d%+9.3f%+11.3f%s%+11.3f%s", this.name, this.matchesPlayed, this.win, this.loss, this.draw, this.points, this.indicative, this.PDO,'%', this.TSR, '%');
 		return result;
 		
 	}
+	
+	public LinkedList<Double> getResult() {
+		return result;
+	}
+	public void setResult(LinkedList<Double> result) {
+		this.result = result;
+	}
+	
+	public void setIndicative(double prediction){
+		this.indicative = prediction;
+	}
+	
+	public double getIndicative(){
+		return indicative;
+	}
+	
+	public void setPDO(double finalPDO){
+		PDO = finalPDO;
+	}
+	
+	public void setTSR(double finalTSR){
+		TSR = finalTSR;
+	}
+	
+	public void updateTSR(double matchTSR){
+		TSR=(TSR*matchesPlayed + matchTSR)/(matchesPlayed+1);
+	}
+
+	public void updatePDO(double matchPDO){
+		PDO=(PDO*matchesPlayed + matchPDO)/(matchesPlayed+1);
+	}
+	
 }

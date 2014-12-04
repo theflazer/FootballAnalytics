@@ -1,17 +1,20 @@
 package commands;
 
+import entities.ContextInterface;
 import entities.League;
 
 public class StartCommand implements Command {
 
-	String [] inputs;
-	public StartCommand(String[] inputs){
+	ContextInterface context;
+	String[] inputs;
+	
+	public StartCommand(ContextInterface c, String[] inputs){
+		context=c;
 		this.inputs=inputs;
 	}
-	
 	@Override
 	public void execute() {
-		League.startSeason(inputs);
+		context.startSeason(inputs);
 	}
 
 }

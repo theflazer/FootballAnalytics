@@ -1,17 +1,17 @@
 package io;
 
 import commands.*;
+import entities.ContextInterface;
 
 
 public class EventHandler {
-private static EventHandler eventHandler = new EventHandler();
 	
-	private EventHandler(){
+	ContextInterface context;
+	
+	public EventHandler(ContextInterface c){
+		context=c;
 	}
 	
-	public static EventHandler getEventHandler(){
-		return eventHandler;
-	}
 	
 	public void process(String line){
 		String input[] = line.split(",");
@@ -22,15 +22,15 @@ private static EventHandler eventHandler = new EventHandler();
 		}
 		if (command.equals("match"))
 		{
-			Invoker.call(new MatchCommand(values));
+			Invoker.call(new MatchCommand(context,values));
 		}
 		else if (command.equals("start"))
 		{
-			Invoker.call(new StartCommand(values));
+			Invoker.call(new StartCommand(context,values));
 		}
 		else if(command.equals("stop"))
 		{
-			Invoker.call(new StopCommand(values));
+			Invoker.call(new StopCommand(context,values));
 		}
 	}
 

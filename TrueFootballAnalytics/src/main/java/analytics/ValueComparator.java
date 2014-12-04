@@ -2,12 +2,12 @@ package analytics;
 
 import java.util.Comparator;
 import java.util.Map;
-import entities.Team;
+import entities.TeamInterface;
 
 class ValueComparator implements Comparator<Double> {
 
-	Map<Team, Double> base;
-	public ValueComparator(Map<Team, Double> predictions) {
+	Map<TeamInterface, Double> base;
+	public ValueComparator(Map<TeamInterface, Double> predictions) {
 		this.base = predictions;
 	}
 

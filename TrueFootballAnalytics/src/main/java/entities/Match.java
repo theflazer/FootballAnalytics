@@ -2,9 +2,9 @@ package entities;
 
 import analytics.*;
 
-public class Match {
-	private Team homeTeamName;
-	private Team awayTeamName;
+public class Match implements MatchInterface {
+	private TeamInterface homeTeam;
+	private TeamInterface awayTeam;
 	private int homeGoals;
 	private int awayGoals;
 	private int homeShots;
@@ -15,9 +15,9 @@ public class Match {
 	private int awayP;
 	
 	
-	public Match(Team hTeam, Team aTeam, int hGoals, int aGoals, int hShots, int aShots, int hSaves, int aSaves, int hP, int aP){
-		homeTeamName = hTeam;
-		awayTeamName = aTeam;
+	public Match(TeamInterface hTeam, TeamInterface aTeam, int hGoals, int aGoals, int hShots, int aShots, int hSaves, int aSaves, int hP, int aP){
+		homeTeam = hTeam;
+		awayTeam = aTeam;
 		homeGoals = hGoals;
 		awayGoals = aGoals;
 		homeShots = hShots;
@@ -26,15 +26,14 @@ public class Match {
 		awaySaves = aSaves;
 		homeP = hP;
 		awayP = aP;
-		UpdateHelper.updateStats(this);
 	}
 	
-	public Team getHomeTeam(){
-		return homeTeamName;
+	public TeamInterface getHomeTeam(){
+		return homeTeam;
 	}
 	
-	public Team getAwayTeam(){
-		return awayTeamName;
+	public TeamInterface getAwayTeam(){
+		return awayTeam;
 	}
 	public int gethomeGoals(){
 		return homeGoals;
@@ -68,8 +67,8 @@ public class Match {
 		return awayP;
 	}
 	
-	public String toString(){
-		return homeTeamName.getName() + " " + awayTeamName.getName() + " " + homeGoals + " " + awayGoals + " " +homeShots + " "+ awayShots + " " + homeSaves +" " + awaySaves + " " + homeP + " " + awayP;
+	public void displayString(){
+		System.out.println(homeTeam.getName() + " " + awayTeam.getName() + " " + homeGoals + " " + awayGoals + " " +homeShots + " "+ awayShots + " " + homeSaves +" " + awaySaves + " " + homeP + " " + awayP); 
 	}
 
 }

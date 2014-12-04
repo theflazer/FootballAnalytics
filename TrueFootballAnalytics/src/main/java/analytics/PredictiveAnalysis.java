@@ -1,54 +1,65 @@
 package analytics;
 
-import io.Printer;
-import entities.*;
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.TreeMap;
 
-import entities.*;
+import entities.SeasonInterface;
+import entities.TeamInterface;
+
 
 public class PredictiveAnalysis {
 	
-	public static Map<Team, Double> predictedTable(ArrayList<Team> teams, double TSR, double PDO){
-		Map <Team, Double> predictions = new HashMap<Team, Double>();
-		for(Team t : teams){
+	public static Map <TeamInterface, Double> predictedTable(ArrayList<TeamInterface> teams, double TSR, double PDO){
+		Map <TeamInterface, Double> predictions = new HashMap<TeamInterface, Double>();
+		for(TeamInterface t : teams){
 			predictions.put(t, applyAnalytic(t, TSR, PDO));
 		}
 		return predictions;
 	}
 
-	public static double applyAnalytic(Team team, double avgTSR, double avgPDO){
-		double prediction = team.getPoints();
-		prediction = prediction*((team.getTSR()-avgTSR)/avgTSR);
-		prediction = prediction*((team.getPDO()-avgPDO)/avgPDO);
-		return Math.round(prediction);
+	public static double applyAnalytic(TeamInterface team, double avgTSR, double avgPDO){
+		double finalTSR = ((team.getTSR()-avgTSR)/avgTSR);
+		team.setTSR(finalTSR*100);
+		double finalPDO = -((team.getPDO()-avgPDO)/avgPDO);
+		team.setPDO(finalPDO*100);
+		team.setIndicative(finalTSR+finalPDO);
+		return (finalTSR+finalPDO);
 	}
 	
 	public static double trendingFactor(LinkedList<Double> results){
 		double trending = 0.0;
 		for(int i=0; i< results.size(); i++)
-			trending+=results.get(i);
+			trending+=processForm(results.get(i),i);
 			
-		return trending;
+		return -trending;
 	}
 	
 	public static double momentumFactor(LinkedList<Double> results){
 		double momentum = 0.0;
 		for(int i=0; i< results.size(); i++)
-			momentum+=results.get(i);
-		
+			momentum+=processForm(results.get(i),i);
+			
 		return momentum;
 	}
 	
-	public static void printAnalyticTable(ArrayList<Team> team){
-		Map <Team, Double> predictions = new HashMap<Team, Double>();
-		predictions = predictedTable(team, League.getCurrentSeason().getAnalyticsClass().getLeagueAvgTSR(), League.getCurrentSeason().getAnalyticsClass().getLeagueAvgPDO());
-		ValueComparator ordered =  new ValueComparator(predictions);
-		//TreeMap<Team,Double> results = new TreeMap<Team,Double>();
+	private static double processForm(Double result, int i) {
+		return (result*((i+1)/10.0));
+	}
+
+	public static void generateAnalyticTable(SeasonInterface s){
+		double TSR=s.getLeagueAvgTSR();
+		double PDO=s.getLeagueAvgPDO();
+		for(TeamInterface t : s.getTeamList()){
+			applyAnalytic(t, TSR, PDO);
+		}
+		//predictedTable(s.getTeamList(), s.getLeagueAvgTSR(), s.getLeagueAvgPDO());
+		//ValueComparator ordered =  new ValueComparator(predictions);
+		//TreeMap<TeamInterface,Double> results = new TreeMap<TeamInterface,Double>();
 		//results.putAll(predictions);
-		System.out.println("Results:" + predictions);
+		//System.out.println(momentumFactor(team.get(0).getResult()));
 	}
 }
